@@ -1,0 +1,19 @@
+describe("Log in", function () {
+    it("Sing in", function () {
+        cy.visit("https://finance.dev.fabrique.studio/accounts/login/", {
+            auth: {
+                username: 'fabrique',
+                password: 'fabrique',
+            },
+        })
+
+    })
+    it("Sing in 1", function () {
+        cy.get('.widget__title').contains('Вход в систему')
+
+        cy.get('.button__content').contains('Далее')
+    })
+    it("Sing in 2", function () {
+        cy.get('.button__content').click()
+        cy.get('.input__input').should('be.empty')
+    })
