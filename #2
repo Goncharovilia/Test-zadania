@@ -1,0 +1,44 @@
+describe("Log in", function () {
+    it("Sing in", function () {
+        cy.visit("https://finance.dev.fabrique.studio/accounts/login/", {
+            auth: {
+                username: 'fabrique',
+                password: 'fabrique',
+            },
+        })
+
+    })
+    it("Sing in 1", function () {
+        cy.get('.widget__title').contains('Вход в систему')
+
+        cy.get('.button__content').contains('Далее')
+    })
+    it("Sing in 2", function () {
+        cy.get('.button__content').click()
+        cy.get('.input__input').should('be.empty')
+    })
+    it("Sing in 3", function () {
+        cy.get('[type="email"]').type('guuggihi@kgjfuvg')
+        cy.get('[type="password"]').type('674757')
+        cy.get('.button__content').click()
+        cy.get('.form-field__errors-list').contains('Невозможно войти с предоставленными учетными данными.'
+        )
+
+    })
+    it("Sing in 4", function () {
+        cy.get('[type="email"]').clear()
+        cy.get('[type="email"]').type('admin@admin.ad')
+        cy.get('[type="password"]').clear()
+        cy.get('[type="password"]').type('admin')
+        cy.get('.button__content').click()
+        
+
+    })
+    it("Sing in 4", function () {
+        cy.get('').silek()
+        cy.get('[type="email"]').type('admin@admin.ad')
+        
+        
+
+    })
+})
